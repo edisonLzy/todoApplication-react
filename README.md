@@ -2,6 +2,14 @@
 
 > https://cn.vitejs.dev/config/#css-modules
 
+- [] react 项目代码检查
+
+- [] 首页布局
+
+- [] Github Auth2 接入
+
+- [] redux 仓库建立
+
 ## 项目环境
 
 0. 代码规范
