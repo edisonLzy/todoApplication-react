@@ -1,7 +1,9 @@
 import { Suspense, useMemo } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import RoutesConfig, { RouteConfig } from '@/router';
-
+import { GradientProvider } from '@/context/gradientColor';
+import store from '@/store';
 function RenderRoute(route: RouteConfig[]) {
   return route.reduce((acc, cur) => {
     if (cur.routes && cur.routes.length > 0) {
@@ -12,8 +14,8 @@ function RenderRoute(route: RouteConfig[]) {
       <Route
         key={cur.path as string}
         render={() => {
-          const { component: Component } = cur;
-          return <Component />;
+          const { component: Component, ...rest } = cur;
+          return <Component {...rest} />;
         }}
       ></Route>
     );
@@ -26,11 +28,15 @@ function App() {
     return RenderRoute([RoutesConfig]);
   }, [RoutesConfig]);
   return (
-    <Router>
-      <Suspense fallback={<h1>loading</h1>}>
-        <Switch>{renderRoute}</Switch>
-      </Suspense>
-    </Router>
+    <Provider store={store}>
+      <GradientProvider>
+        <Router>
+          <Suspense fallback={<h1>loading</h1>}>
+            <Switch>{renderRoute}</Switch>
+          </Suspense>
+        </Router>
+      </GradientProvider>
+    </Provider>
   );
 }
 export default App;

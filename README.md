@@ -8,7 +8,7 @@
 
 - [] Github Auth2 接入
 
-- [] redux 仓库建立
+- [x] redux 仓库建立
 
 ## 项目环境
 

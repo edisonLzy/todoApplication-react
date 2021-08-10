@@ -14,7 +14,7 @@ export default defineConfig({
   },
   css: {
     modules: {
-      localsConvention: 'dashesOnly',
+      localsConvention: 'camelCaseOnly',
     },
   },
 });

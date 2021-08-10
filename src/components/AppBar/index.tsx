@@ -2,6 +2,8 @@ import styles from './index.module.less';
 import cls from 'classnames';
 import { PropsWithChildren } from 'react';
 
+console.log(styles);
+
 interface Props {
   leftIcon: string;
   rightIcon: string;

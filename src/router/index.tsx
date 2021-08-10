@@ -1,18 +1,22 @@
 import { RouteProps } from 'react-router';
 import { Redirect } from 'react-router-dom';
-import { lazy } from 'react';
+import { ComponentType, lazy } from 'react';
 export interface RouteConfig extends RouteProps {
   routes?: this[];
-  component: any;
+  component: ComponentType<{
+    routes?: RouteConfig[];
+  }>;
 }
 const routesConfig: RouteConfig = {
   path: '/',
-  component: <Redirect to="/home" from="/" />,
+  component: () => <Redirect to="/home" from="/" />,
   routes: [
     {
       exact: true,
       path: '/home',
-      component: lazy(() => import('@/pages/Home')),
+      component: lazy(
+        () => import(/* webpackChunkName: 'home' */ '@/pages/Home')
+      ),
     },
   ],
 };
