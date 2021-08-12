@@ -37,3 +37,17 @@ body {
   height: 100%;
   overflow: hidden;
 }
+
+
+.fade-enter-done{
+  opacity: 1;
+}
+.fade-enter-active{
+   transition: opacity 1s;
+}
+.fade-exit-done{
+  opacity: 0;
+}
+.fade-exit-active{
+  transition: opacity 1s;
+}

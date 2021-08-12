@@ -1,8 +1,8 @@
 import { createContext, PropsWithChildren, useCallback, useState } from 'react';
 
-interface GradientCtx {
+export interface GradientCtx {
   colors: [topColor: string, bottomColor: string];
-  onColorsChange: (colors: this['colors']) => void;
+  setGradientColors: (colors: this['colors']) => void;
 }
 export const gradientCtx = createContext<GradientCtx>(null!);
 export function GradientProvider({ children }: PropsWithChildren<any>) {
@@ -14,7 +14,7 @@ export function GradientProvider({ children }: PropsWithChildren<any>) {
     <gradientCtx.Provider
       value={{
         colors: currentColors,
-        onColorsChange: setCurrentColors,
+        setGradientColors: setCurrentColors,
       }}
     >
       {children}

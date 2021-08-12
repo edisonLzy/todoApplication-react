@@ -1,4 +1,5 @@
 import { PropsWithChildren, useContext, useMemo } from 'react';
+// import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { gradientCtx } from '@/context/gradientColor';
 import styles from './index.module.less';
 
@@ -11,14 +12,25 @@ export default function Gradient({ children }: PropsWithChildren<Props>) {
   }, [colors]);
   return (
     <div className={styles['gradient']}>
+      {/* <SwitchTransition>
+        <CSSTransition
+          addEndListener={(node, done) =>
+            node.addEventListener('transitionend', done, false)
+          }
+          timeout={1000}
+          classNames="fade"
+          key={colors.join(',')}
+        > */}
       <div
         className={styles['gradientInner']}
         style={{
-          backgroundImage: gradientColor,
+          background: gradientColor,
         }}
       >
         {children}
       </div>
+      {/* </CSSTransition>
+      </SwitchTransition> */}
     </div>
   );
 }
